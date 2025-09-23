@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script src='./javascripts/sas/util/messagingUtil.js'></script>
+    <script src="./javascripts/jquery/jquery.min.js"></script>
+
+     <script type="text/javascript">
+                "use strict";
+
+                // Declare datareceive event handler from VA visualizations
+        va.messagingUtil.setOnDataReceivedCallback(onDataReceived);
+                // Event handler used upper : retrieve three value from the report, resource Id respectively
+        function onDataReceived(resultData)
+        {
+            // Role 1 : uri source object
+            document.getElementById('mainForm').elements['flow_name'].value = resultData.data[0][0];
+			document.getElementById('mainForm').elements['scenario_name'].value = resultData.data[0][1];
+			document.getElementById('mainForm').elements['decision_flow'].value = resultData.data[0][2];
+			document.getElementById('mainForm').elements['reference_date'].value = resultData.data[0][3];
+                        document.getElementById('mainForm').elements['acc_type_list'].value = resultData.data[0][4];
+			document.getElementById('mainForm').elements['lookback_months'].value = resultData.data[0][5];
+			document.getElementById('mainForm').elements['min_total_trans_amount'].value = resultData.data[0][6];
+			document.getElementById('mainForm').elements['value_for_scoring'].value = resultData.data[0][7];
+                        document.getElementById('mainForm').elements['velocity_factor'].value = resultData.data[0][8];
+
+
+			var s_date_tmp = document.getElementById('mainForm').elements['reference_date'].value;
+			var s_date = s_date_tmp.replace(/(..).(..).(....)/,"$3-$1-$2");
+			document.getElementById("date_ref").setAttribute("min",s_date);
+			document.getElementById("date_ref").defaultValue = s_date;
+            }
+     </script>
+
+     <meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge" />
+     <link rel="stylesheet" href="https:///aml-site-a.sas.local/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+
+    <!DOCTYPE html>
+
+    <body>
+        <div class="container-fluid" style="text-align: center; margin-top: 0px;">  
+	<form id="mainForm" action="/SASJobExecution/" enctype="multipart/form-data">
+                <input type="hidden" name="_program" value="/Public/SIMU/simu_central">
+                <input type="hidden" name="flow_name" id="flow_name">
+		<input type="hidden" name="scenario_name" id="scenario_name">
+		<input type="hidden" name="decision_flow" id="decision_flow">
+		<input type="hidden" name="reference_date" id="reference_date">
+		<input type="hidden" name="acc_type_list" id="acc_type_list">
+                <input type="hidden" name="lookback_months" id="lookback_months">
+		<input type="hidden" name="min_total_trans_amount" id="min_total_trans_amount">
+                <input type="hidden" name="value_for_scoring" id="value_for_scoring">
+                <input type="hidden" name="velocity_factor" id="velocity_factor">
+
+		<label>
+		Select a start date :
+		<input type="date" name="date_ref" id="date_ref">
+                <input type="hidden" name="_action" value="wait">
+		<input type="submit" class="btn btn-primary" value="Click to proceed" />
+        	<br>   
+	</form>
+        </div>
+    </body>
+	
+</html>
+
