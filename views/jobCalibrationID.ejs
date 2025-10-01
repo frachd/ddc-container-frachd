@@ -11,6 +11,29 @@
                 // Declare datareceive event handler from VA visualizations
         va.messagingUtil.setOnDataReceivedCallback(onDataReceived);
                 // Event handler used upper : retrieve three value from the report, resource Id respectively
+
+		function convertToTimestamp(dateString) {  
+		    // Create a new Date object by parsing the input string  
+		    let date = new Date(dateString);  
+		  
+		    // Ensure that the date object is valid  
+		    if (isNaN(date.getTime())) {  
+		        throw new Error("Invalid date format");  
+		    }  
+		  
+		    // Format the date components  
+		    let year = date.getFullYear();  
+		    let month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based  
+		    let day = String(date.getDate()).padStart(2, '0');  
+		  
+		    // Construct the timestamp string  
+		    let formattedTimestamp = `${year}-${month}-${day} 00:00:00`;  
+		  
+		    return formattedTimestamp;  
+		}  
+  
+
+
         function onDataReceived(resultData)
         {
             // Role 1 : uri source object
@@ -24,13 +47,7 @@
 			document.getElementById('mainForm').elements['value_for_scoring'].value = resultData.parameters[2]['value'];
             document.getElementById('mainForm').elements['velocity_factor'].value = resultData.parameters[3]['value'];
 
-			const dateObject = new Date(reference_date);
-			const year = dateObject.getFullYear(); 
-			const month = dateObject.getMonth() + 1; 
-			const day = dateObject.getDate(); 
-			const formattedMonth = String(month).padStart(2, '0'); 
-			const formattedDay = String(day).padStart(2, '0');  
-			const reference_date = `${year}-${formattedMonth}-${formattedDay} 00:00:00`;
+			let reference_date = convertToTimestamp(reference_date);  
             }
      </script>
 
