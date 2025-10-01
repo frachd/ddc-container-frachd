@@ -17,12 +17,12 @@
             document.getElementById('mainForm').elements['flow_name'].value = resultData.data[0][0];
 			document.getElementById('mainForm').elements['scenario_name'].value = resultData.data[0][1];
 			document.getElementById('mainForm').elements['decision_flow'].value = resultData.data[0][2];
-			document.getElementById('mainForm').elements['reference_date'].value = resultData.parameters[0]['reference_date'];
+			document.getElementById('mainForm').elements['reference_date'].value = resultData.parameters[0]['value'];
             document.getElementById('mainForm').elements['acc_type_list'].value = resultData.data[0][4];	
-			document.getElementById('mainForm').elements['lookback_months'].value = resultData.parameters[0]['lookback_months'];
-			document.getElementById('mainForm').elements['min_total_trans_amount'].value = resultData.parameters[0]['min_total_trans_amount'];
-			document.getElementById('mainForm').elements['value_for_scoring'].value = resultData.parameters[0]['value_for_scoring'];
-            document.getElementById('mainForm').elements['velocity_factor'].value = resultData.parameters[0]['velocity_factor'];
+			document.getElementById('mainForm').elements['lookback_months'].value = resultData.parameters[1]['value'];
+			document.getElementById('mainForm').elements['min_total_trans_amount'].value = resultData.parameters[2]['value'];
+			document.getElementById('mainForm').elements['value_for_scoring'].value = resultData.parameters[3]['value'];
+            document.getElementById('mainForm').elements['velocity_factor'].value = resultData.parameters[4]['value'];
 
 
 			var s_date_tmp = document.getElementById('mainForm').elements['reference_date'].value;
