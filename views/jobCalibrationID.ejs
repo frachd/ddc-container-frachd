@@ -24,11 +24,13 @@
 			document.getElementById('mainForm').elements['value_for_scoring'].value = resultData.parameters[2]['value'];
             document.getElementById('mainForm').elements['velocity_factor'].value = resultData.parameters[3]['value'];
 
-
-			var s_date_tmp = document.getElementById('mainForm').elements['reference_date'].value;
-			var s_date = s_date_tmp.replace(/(..).(..).(....)/,"$3-$1-$2");
-			document.getElementById("date_ref").setAttribute("min",s_date);
-			document.getElementById("date_ref").defaultValue = s_date;
+			const dateObject = new Date(reference_date);
+			const year = dateObject.getFullYear(); 
+			const month = dateObject.getMonth() + 1; 
+			const day = dateObject.getDate(); 
+			const formattedMonth = String(month).padStart(2, '0'); 
+			const formattedDay = String(day).padStart(2, '0');  
+			const reference_date = `${year}-${formattedMonth}-${formattedDay} 00:00:00`;
             }
      </script>
 
