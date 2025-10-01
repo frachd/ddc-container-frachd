@@ -17,18 +17,12 @@
             document.getElementById('mainForm').elements['flow_name'].value = resultData.data[0][0];
 			document.getElementById('mainForm').elements['scenario_name'].value = resultData.data[0][1];
 			document.getElementById('mainForm').elements['decision_flow'].value = resultData.data[0][2];
-			document.getElementById('mainForm').elements['reference_date'].value = resultData.data[0][3];
-            document.getElementById('mainForm').elements['acc_type_list'].value = resultData.data[0][4];
-			document.getElementById('mainForm').elements['lookback_months'].value = resultData.data[0][5];
-			document.getElementById('mainForm').elements['min_total_trans_amount'].value = resultData.data[0][6];
-			document.getElementById('mainForm').elements['value_for_scoring'].value = resultData.data[0][7];
-            document.getElementById('mainForm').elements['velocity_factor'].value = resultData.data[0][8];
-
-			document.getElementById('mainForm').elements['reference_date'].value = resultData.parameters[0];
-			document.getElementById('mainForm').elements['lookback_months'].value = resultData.parameters[1];
-			document.getElementById('mainForm').elements['min_total_trans_amount'].value = resultData.parameters[2];
-			document.getElementById('mainForm').elements['value_for_scoring'].value = resultData.parameters[3];
-            document.getElementById('mainForm').elements['velocity_factor'].value = resultData.parameters[4];
+			document.getElementById('mainForm').elements['reference_date'].value = resultData.parameters[0][0];
+            document.getElementById('mainForm').elements['acc_type_list'].value = resultData.data[0][4];	
+			document.getElementById('mainForm').elements['lookback_months'].value = resultData.parameters[0][1];
+			document.getElementById('mainForm').elements['min_total_trans_amount'].value = resultData.parameters[0][2];
+			document.getElementById('mainForm').elements['value_for_scoring'].value = resultData.parameters[0][3];
+            document.getElementById('mainForm').elements['velocity_factor'].value = resultData.parameters[0][4];
 
 
 			var s_date_tmp = document.getElementById('mainForm').elements['reference_date'].value;
