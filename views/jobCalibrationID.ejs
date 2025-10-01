@@ -14,9 +14,9 @@
         function onDataReceived(resultData)
         {
             // Role 1 : uri source object
-            document.getElementById('mainForm').elements['flow_name'].value = resultData.data[0][0];
-			document.getElementById('mainForm').elements['scenario_name'].value = resultData.data[0][1];
-			document.getElementById('mainForm').elements['decision_flow'].value = resultData.data[0][2];
+            document.getElementById('mainForm').elements['entity_type'].value = resultData.data[0][0];
+			document.getElementById('mainForm').elements['decision_flow'].value = resultData.data[0][1];
+			document.getElementById('mainForm').elements['decision_rule'].value = resultData.data[0][2];
 			document.getElementById('mainForm').elements['reference_date'].value = resultData.parameters[4]['value'];
             document.getElementById('mainForm').elements['acc_type_list'].value = resultData.data[0][4];	
 			document.getElementById('mainForm').elements['lookback_months'].value = resultData.parameters[0]['value'];
@@ -43,10 +43,10 @@
     <body>
         <div class="container-fluid" style="text-align: center; margin-top: 0px;">  
 	<form id="mainForm" action="/SASJobExecution/" enctype="multipart/form-data">
-        <input type="hidden" name="_program" value="/Public/SIMU/simu_central">
-        <input type="hidden" name="flow_name" id="flow_name">
-		<input type="hidden" name="scenario_name" id="scenario_name">
+        <input type="hidden" name="_program" value="/Public/SIMU/simu_central_V2">
+        <input type="hidden" name="entity_type" id="entity_type">
 		<input type="hidden" name="decision_flow" id="decision_flow">
+		<input type="hidden" name="decision_rule" id="decision_rule">
 		<input type="hidden" name="reference_date" id="reference_date">
 		<input type="hidden" name="acc_type_list" id="acc_type_list">
         <input type="hidden" name="lookback_months" id="lookback_months">
